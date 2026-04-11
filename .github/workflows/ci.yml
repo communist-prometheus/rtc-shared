@@ -27,14 +27,8 @@ jobs:
       - name: Type-check
         run: bun run type-check
 
-      - name: Lint (Biome)
-        run: bunx biome ci .
-
-      - name: Lint (oxlint)
-        run: bunx oxlint --config ../../.oxlintrc.json
-        # oxlintrc lives at the repo root; path is relative to this package repo
-        # root. Adjust if the config is vendored into this repo separately.
-        continue-on-error: true
+      - name: Lint
+        run: bun run lint
 
       - name: Test
         run: bun run test
