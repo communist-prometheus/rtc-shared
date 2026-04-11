@@ -1,24 +1,17 @@
 import { Schema } from 'effect'
 
-export const RoomId = Schema.String.pipe(
-  Schema.brand('RoomId')
-)
+export const RoomId = Schema.String.pipe(Schema.brand('RoomId'))
 
 export type RoomId = typeof RoomId.Type
 
-export const UserId = Schema.String.pipe(
-  Schema.brand('UserId')
-)
+export const UserId = Schema.String.pipe(Schema.brand('UserId'))
 
 export type UserId = typeof UserId.Type
 
 export const RoomConfig = Schema.Struct({
   roomId: RoomId,
   maxUsers: Schema.optionalWith(
-    Schema.Number.pipe(
-      Schema.int(),
-      Schema.positive()
-    ),
+    Schema.Number.pipe(Schema.int(), Schema.positive()),
     { default: () => 10 }
   ),
   destroyTimeoutMs: Schema.optionalWith(
